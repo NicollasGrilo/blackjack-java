@@ -1,6 +1,7 @@
 package game.frame;
 
 import game.services.BlackJackService;
+import game.services.DeakService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +21,8 @@ public class GamePanel extends JPanel {
     private JButton standButton = new JButton("STAND");
     private JButton restartButton = new JButton("RESTART");
     private BlackJackService blackJackService = new BlackJackService();
+
+    private DeakService deakService = new DeakService();
 
     private AtomicInteger counterDealer = new AtomicInteger(-1);
     private AtomicInteger counterPlayer = new AtomicInteger(-1);

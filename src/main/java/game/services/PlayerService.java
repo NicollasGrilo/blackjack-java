@@ -6,16 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerService {
-    private final List<Card> deck;
     private int sum;
     private int aceCount;
     private List<Card> hands;
 
-    public PlayerService(DeakService deakService) {
-        this.deck = deakService.getDeck();
-    }
-
-    public void addCardHand() {
+    public void addCardHand(List<Card> deck) {
         Card card = deck.remove(deck.size() - 1);
         sum += card.getValue();
         aceCount += card.isAce() ? 1 : 0;
@@ -31,7 +26,7 @@ public class PlayerService {
         return sum;
     }
 
-    public void buildPlayer() {
+    public void buildPlayer(List<Card> deck) {
         hands = new ArrayList<Card>();
         sum = 0;
         aceCount = 0;

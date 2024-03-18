@@ -6,8 +6,9 @@ import java.util.List;
 
 public class BlackJackService {
     private DeakService deakService = new DeakService();
-    private DealerService dealerService = new DealerService(deakService);
-    private PlayerService playerService = new PlayerService(deakService);
+    private DealerService dealerService = new DealerService();
+    private PlayerService playerService = new PlayerService();
+
 
     public void loadGame() {
         // deck
@@ -16,10 +17,10 @@ public class BlackJackService {
         System.out.println("Total de cartas: " + getDeck().size());
 
         // banca
-        dealerService.buildDealer();
+        dealerService.buildDealer(deakService.getDeck());
 
         // jogador
-        playerService.buildPlayer();
+        playerService.buildPlayer(deakService.getDeck());
 
         System.out.println("Total de cartas: " + deakService.getDeck().size());
     }
@@ -84,11 +85,11 @@ public class BlackJackService {
     }
 
     public void addDealerHand() {
-        dealerService.addCardHand();
+        dealerService.addCardHand(deakService.getDeck());
     }
 
     public void addPlayerHand() {
-        playerService.addCardHand();
+        playerService.addCardHand(deakService.getDeck());
     }
 
     public int reducePlayerAce() {
